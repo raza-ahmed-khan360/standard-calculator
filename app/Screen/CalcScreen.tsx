@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+"use client";
+
+import React, { useState } from "react";
 import Button from "../Components/Button";
 import Display from "../Components/Display";
 
@@ -8,20 +10,11 @@ const CalcScreen = () => {
   const [operator, setOperator] = useState<string | null>(null);
   const [isChange, setIsChange] = useState<boolean>(false);
 
-  // Audio instance
-  let clickSound: HTMLAudioElement | null = null;
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      clickSound = new Audio("/click-sound.wav");
-    }
-  }, []); // Initialize only once
-
+  // Play the click sound
   const playSound = () => {
-    if (clickSound) {
-      clickSound.currentTime = 0; // Reset for successive clicks
-      clickSound.play();
-    }
+    const clickSound = new Audio("/click-sound.wav"); // Create a new instance each time
+    clickSound.currentTime = 0; // Reset to the start
+    clickSound.play();
   };
 
   const acHandler = () => {
