@@ -1,3 +1,6 @@
+"use client";
+
+
 import CalcScreen from "./Screen/CalcScreen";
 
 export default function Home() {
